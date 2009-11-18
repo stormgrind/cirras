@@ -1,5 +1,5 @@
-$: << 'lib/jboss-appliance-support/lib'
+$: << 'lib/boxgrinder-build/lib'
 
-require 'jboss-cloud/helpers/rake-helper'
+require 'boxgrinder/helpers/rake-helper'
 
-JBossCloud::RakeHelper.new
+BoxGrinder::RakeHelper.new

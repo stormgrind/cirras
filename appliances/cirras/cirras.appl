@@ -8,3 +8,5 @@ packages:
   includes:
     - jboss-cloud-management
     - jopr-agent
+    - which
+    - sudo

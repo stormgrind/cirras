@@ -1,7 +1,11 @@
 name: front-end
 summary: front-end appliance with httpd, mod_cluster and GossipRouter
+hardware:
+  partitions:
+    - root: "/"
+      size: 2
 appliances:
-  - jboss-cloud
+  - cirras
 packages:
   includes:
     - java-1.6.0-openjdk
