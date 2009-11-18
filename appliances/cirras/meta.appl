@@ -1,0 +1,11 @@
+name: meta
+summary: Appliance to build images using BoxGrinder
+appliances:
+  - cirras
+packages:
+  includes:
+    - dhcp
+    - jboss-cloud-management
+    - java-1.6.0-openjdk-devel
+    - jopr
+    - postgresql-server

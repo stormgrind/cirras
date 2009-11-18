@@ -1,0 +1,12 @@
+name: back-end
+summary: back-end appliance with JBoss AS 5
+appliances:
+  - cirras
+packages:
+  includes:
+    - jboss-as5
+    - torquebox
+    - jboss-as5-cloud-profiles
+    - jboss-as5-cloud-mod_cluster
+    - java-1.6.0-openjdk
+
