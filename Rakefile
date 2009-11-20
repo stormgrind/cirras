@@ -4,5 +4,4 @@ $: << 'lib/cantiere/lib'
 require 'boxgrinder/helpers/rake-helper'
 require 'cantiere/helpers/rake-helper'
 
-BoxGrinder::RakeHelper.new
-Cantiere::RakeHelper.new
+Cantiere::RakeHelper.new( BoxGrinder::RakeHelper.new.config )
