@@ -1,6 +1,6 @@
-Summary:        JBoss Cloud management support for appliances
-Name:           jboss-cloud-management
-Version:        1.0.0.Beta7
+Summary:        CirrAS management for appliances
+Name:           cirras-management
+Version:        1.0.0.Beta1
 Release:        1
 License:        LGPL
 Requires:       git
@@ -19,12 +19,12 @@ Source2:        http://gems.rubyforge.org/gems/rack-1.0.0.gem
 Source3:        http://gems.rubyforge.org/gems/thin-1.2.2.gem
 
 %description
-JBoss Cloud management support for appliances.
+CirrAS management for appliances.
 
 %install
 rm -rf $RPM_BUILD_ROOT
 
-/usr/bin/git clone git://github.com/goldmann/jboss-cloud-management.git $RPM_BUILD_ROOT/usr/share/%{name}
+/usr/bin/git clone git://github.com/stormgrind/cirras-management.git $RPM_BUILD_ROOT/usr/share/%{name}
 
 pushd $RPM_BUILD_ROOT/usr/share/%{name}
 /usr/bin/git submodule init
@@ -48,8 +48,8 @@ rm -rf $RPM_BUILD_ROOT
 /usr/sbin/useradd -m -r -g thin thin 2>/dev/null || :
 
 %post
-/bin/mkdir -p /var/log/jboss-cloud-management
-/bin/chown thin:thin /var/log/jboss-cloud-management
+/bin/mkdir -p /var/log/%{name}
+/bin/chown thin:thin /var/log/%{name}
 echo "sh /usr/share/%{name}/src/network-setup.sh" >> /etc/rc.local
 echo -e "thin ALL = NOPASSWD: ALL\n" >> /etc/sudoers
 /bin/sed -i s/"Defaults    requiretty"/"#Defaults    requiretty"/ /etc/sudoers
@@ -61,14 +61,5 @@ echo -e "thin ALL = NOPASSWD: ALL\n" >> /etc/sudoers
 /
 
 %changelog
-* Fri Jul 17 2009 Marek Goldmann 1.0.0.Beta6-1
-- Added required gems
-
-* Fri May 22 2009 Marek Goldmann 1.0.0.Beta3-1
-- Submodules and building thin_parser
-
-* Thu May 14 2009 Marek Goldmann 1.0.0.Beta2-1
-- Added thin
-
-* Sat May 09 2009 Marek Goldmann 1.0.0.Beta1-1
+* Sat Nov 21 2009 Marek Goldmann 1.0.0.Beta1-1
 - Initial release
