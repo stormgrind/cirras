@@ -6,7 +6,7 @@ appliances:
   - jeos
 packages:
   includes:
-    - jboss-cloud-management
+    - cirras-management
     - jopr-agent
     - which
     - sudo
