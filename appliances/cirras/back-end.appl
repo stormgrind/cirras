@@ -1,5 +1,7 @@
 name: back-end
 summary: back-end appliance with JBoss AS 5
+hardware:
+  memory: 512
 appliances:
   - cirras
 packages:
