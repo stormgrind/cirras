@@ -13,3 +13,4 @@ packages:
     - jopr-agent
     - which
     - sudo
+    - ruby-devel

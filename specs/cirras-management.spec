@@ -10,6 +10,7 @@ Requires:       rubygems
 Requires:       initscripts
 Requires:       sed
 Requires:       sudo
+Requires:       ruby-devel
 #Source0:        thin-ruby-env.patch
 BuildRequires:  ruby
 BuildRoot:      %{_tmppath}/%{name}-%{version}-%{release}-root-%(%{__id_u} -n)
