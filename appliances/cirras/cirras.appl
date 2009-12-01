@@ -14,3 +14,5 @@ packages:
     - which
     - sudo
     - ruby-devel
+    - make
+    - gcc-c++
