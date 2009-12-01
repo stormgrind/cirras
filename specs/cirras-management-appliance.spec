@@ -14,8 +14,8 @@ Management appliance helper RPM
 
 %post
 /sbin/chkconfig postgresql on
-/sbin/service postgresql initdb
 /bin/sed -i s/'host all all 127.0.0.1\/32 ident sameuser'/'host all all 127.0.0.1\/32 md5'/g /var/lib/pgsql/data/pg_hba.conf
+/bin/echo "/sbin/service postgresql initdb" >> /etc/rc.local
 
 %clean
 rm -Rf $RPM_BUILD_ROOT
