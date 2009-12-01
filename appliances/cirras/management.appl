@@ -10,4 +10,5 @@ packages:
     - java-1.6.0-openjdk-devel
     - jopr
     - postgresql-server
+    - cirras-management-appliance
     

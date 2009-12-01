@@ -11,6 +11,7 @@ Source0:        jopr-agent.init
 Source1:        jopr-agent-install.sh
 Group:          Applications/System
 Requires:       java-1.6.0-openjdk
+Requires(post): /sbin/chkconfig
 BuildRoot:      %{_tmppath}/%{name}-%{version}-%{release}-root-%(%{__id_u} -n)
 
 %define runuser jopr
@@ -31,6 +32,10 @@ install -m 755 %{SOURCE1} $RPM_BUILD_ROOT/usr/share/%{name}/jopr-agent-install.s
 
 %clean
 rm -Rf $RPM_BUILD_ROOT
+
+%post
+/sbin/chkconfig --add %{name}
+/sbin/chkconfig %{name} on
 
 %files
 %defattr(-,root,root)
