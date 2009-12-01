@@ -1,6 +1,6 @@
 #!/bin/sh
 
-[ -f /etc/sysconfig/jboss-cloud ] && . /etc/sysconfig/jboss-cloud
+[ -f /etc/sysconfig/boxgrinder ] && . /etc/sysconfig/boxgrinder
 
 JOPR_AGENT_HOME=/opt/jopr-agent
 

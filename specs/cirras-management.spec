@@ -19,6 +19,7 @@ Source1:        http://gems.rubyforge.org/gems/eventmachine-0.12.8.gem
 Source2:        http://gems.rubyforge.org/gems/rack-1.0.0.gem
 Source3:        http://gems.rubyforge.org/gems/thin-1.2.2.gem
 Source4:        http://rubyforge.org/frs/download.php/52464/xml-simple-1.0.12.gem
+BuildArch:      noarch
 
 %description
 CirrAS management for appliances.

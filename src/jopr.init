@@ -92,7 +92,7 @@ POSTGRESQL_PACKAGES=`rpm -qa | grep postgresql | wc -l`
 [ $POSTGRESQL_PACKAGES -eq "0" ] && exit
 
 # Configure Jopr so we don't need to use web configuration wizard
-/usr/share/jopr/preconfigure-jopr.sh
+/usr/share/jopr/preconfigure-jopr.sh > /opt/jopr/preconfigure.log
 
 # preconfigure Jopr Agent
 [ -d $RHQ_SERVER_HOME/jbossas/server/default/deploy/rhq.ear.rej ] && /usr/share/jopr/preconfigure-jopr-agent.sh > /opt/jopr/agent-preconfigure.log

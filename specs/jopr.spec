@@ -15,6 +15,9 @@ Requires:       shadow-utils
 Requires:       java-1.6.0-openjdk
 Requires:       unzip
 Requires:       urw-fonts
+Requires(pre):  postgresql
+Requires(post): /sbin/chkconfig
+Requires(post): /bin/sed
 BuildRoot:      %{_tmppath}/%{name}-%{version}-%{release}-root-%(%{__id_u} -n)
 AutoReqProv:    0
 AutoReq:        0 
@@ -53,6 +56,13 @@ rm -Rf $RPM_BUILD_ROOT
 %pre
 /usr/sbin/groupadd -r jopr 2>/dev/null || :
 /usr/sbin/useradd -c "JOPR" -r -s /bin/bash -d /opt/jboss-jopr -g jopr jopr 2>/dev/null || :
+
+%post
+/sbin/chkconfig --add %{name}
+/sbin/chkconfig %{name} on
+/sbin/chkconfig postgresql on
+/sbin/service postgresql initdb
+/bin/sed -i s/'host all all 127.0.0.1\/32 ident sameuser'/'host all all 127.0.0.1\/32 md5'/g /var/lib/pgsql/data/pg_hba.conf
 
 %files
 %defattr(-,jopr,jopr)

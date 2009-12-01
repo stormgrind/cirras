@@ -1,5 +1,7 @@
 name: management
 summary: Appliance to build images using BoxGrinder
+hardware:
+  memory: 512
 appliances:
   - cirras
 packages:

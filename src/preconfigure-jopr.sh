@@ -1,6 +1,6 @@
 #!/bin/sh
 
-[ -f /etc/sysconfig/jboss-cloud ]   && . /etc/sysconfig/jboss-cloud
+[ -f /etc/sysconfig/boxgrinder ]   && . /etc/sysconfig/boxgrinder
 [ -f /etc/sysconfig/jopr ]          && . /etc/sysconfig/jopr
 
 DATABASE_NAME=jopr
