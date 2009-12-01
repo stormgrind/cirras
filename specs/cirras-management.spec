@@ -18,6 +18,7 @@ Source0:        http://gems.rubyforge.org/gems/daemons-1.0.10.gem
 Source1:        http://gems.rubyforge.org/gems/eventmachine-0.12.8.gem
 Source2:        http://gems.rubyforge.org/gems/rack-1.0.0.gem
 Source3:        http://gems.rubyforge.org/gems/thin-1.2.2.gem
+Source4:        http://rubyforge.org/frs/download.php/52464/xml-simple-1.0.12.gem
 
 %description
 CirrAS management for appliances.
@@ -39,6 +40,7 @@ cp %{SOURCE0} $RPM_BUILD_ROOT/usr/share/%{name}-gems
 cp %{SOURCE1} $RPM_BUILD_ROOT/usr/share/%{name}-gems
 cp %{SOURCE2} $RPM_BUILD_ROOT/usr/share/%{name}-gems
 cp %{SOURCE3} $RPM_BUILD_ROOT/usr/share/%{name}-gems
+cp %{SOURCE4} $RPM_BUILD_ROOT/usr/share/%{name}-gems
 
 %clean
 rm -rf $RPM_BUILD_ROOT
