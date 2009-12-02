@@ -16,3 +16,4 @@ packages:
     - ruby-devel
     - make
     - gcc-c++
+    - wget

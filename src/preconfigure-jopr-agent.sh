@@ -3,7 +3,7 @@
 [ -f /etc/sysconfig/jopr ] && . /etc/sysconfig/jopr
 
 JOPR_AGENT_NAME=rhq-enterprise-agent
-JOPR_AGENT_VERSION=1.3.0
+JOPR_AGENT_VERSION=1.3.1
 JOPR_CONFIG=/usr/share/jopr/agent-configuration.xml
 JOPR_TMP_DIR=/tmp/jopr-$JOPR_VERSION
 

@@ -11,6 +11,10 @@ packages:
     - jboss-as5-cloud-profiles
     - jboss-as5-cloud-mod_cluster
     - java-1.6.0-openjdk
+post:
+  base:
+    - "/sbin/chkconfig --add jboss-as5"
+    - "/sbin/chkconfig --level 2345 jboss-as5 off"
 
 #/bin/echo "thin ALL=(ALL) NOPASSWD: /bin/sh, /sbin/service" >> /etc/sudoers
 #/bin/sed -i s/"Defaults requiretty"/"#Defaults requiretty"/ /etc/sudoers
