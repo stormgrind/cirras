@@ -12,3 +12,5 @@ packages:
     - jboss-as5-cloud-mod_cluster
     - java-1.6.0-openjdk
 
+#/bin/echo "thin ALL=(ALL) NOPASSWD: /bin/sh, /sbin/service" >> /etc/sudoers
+#/bin/sed -i s/"Defaults requiretty"/"#Defaults requiretty"/ /etc/sudoers
