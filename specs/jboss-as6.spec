@@ -15,7 +15,7 @@ Requires:       java-1.6.0-openjdk
 Requires:       initscripts
 BuildRoot:      %{_tmppath}/%{name}-%{version}-%{release}-root-%(%{__id_u} -n)
 
-%define runuser jboss
+%define runuser %{name}
 %define __jar_repack %{nil}
 
 %description
@@ -31,6 +31,7 @@ cd %{_topdir}/BUILD
 install -d -m 755 $RPM_BUILD_ROOT/opt/%{name}
 cp -R jboss-%{version}/* $RPM_BUILD_ROOT/opt/%{name}
 rm -Rf $RPM_BUILD_ROOT/opt/%{name}/server/*/deploy/ROOT.war
+rm -rf $RPM_BUILD_ROOT/opt/%{name}/bin/jboss_init_solaris.sh 
 
 install -d -m 755 $RPM_BUILD_ROOT%{_initrddir}
 install -m 755 %{SOURCE1} $RPM_BUILD_ROOT%{_initrddir}/%{name}
