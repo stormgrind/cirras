@@ -1,20 +1,19 @@
 name: back-end
-summary: back-end appliance with JBoss AS 5
+summary: back-end appliance with JBoss AS 6
 hardware:
   memory: 512
 appliances:
   - cirras
 packages:
   includes:
-    - jboss-as5
+    - jboss-as6
+    - jboss-as6-cloud-profiles
     - torquebox
-    - jboss-as5-cloud-profiles
-    - jboss-as5-cloud-mod_cluster
     - java-1.6.0-openjdk
 post:
   base:
-    - "/sbin/chkconfig --add jboss-as5"
-    - "/sbin/chkconfig --level 2345 jboss-as5 off"
+    - "/sbin/chkconfig --add jboss-as6"
+    - "/sbin/chkconfig --level 2345 jboss-as6 off"
 
 #/bin/echo "thin ALL=(ALL) NOPASSWD: /bin/sh, /sbin/service" >> /etc/sudoers
 #/bin/sed -i s/"Defaults requiretty"/"#Defaults requiretty"/ /etc/sudoers
