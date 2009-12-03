@@ -152,7 +152,7 @@ JAVA_OPTS="$JAVA_OPTS -Djboss.ejb3entitypartition.mcast_port=$JBOSS_UDP_PORT_EJB
 [ "x$JBOSS_UDP_PORT_EJB3SFSB" != "x" ] && \
 JAVA_OPTS="$JAVA_OPTS -Djboss.ejb3sfsbpartition.mcast_port=$JBOSS_UDP_PORT_EJB3SFSB"
 [ "x$JBOSS_PROXY_LIST" != "x" ] && \
-JAVA_OPTS="$JAVA_OPTS -Djboss.modcluster.proxyList=$JBOSS_PROXY_LIST"
+JAVA_OPTS="$JAVA_OPTS -Djboss.mod_cluster.proxyList=$JBOSS_PROXY_LIST"
 
 JAVA_OPTS="$JAVA_OPTS -Djboss.jvmRoute=$HOSTNAME-$IP_ADDRESS"
 
