@@ -1,0 +1,44 @@
+diff -Naur jboss-6.0.0.M1/server/cluster/deploy/cluster/jgroups-channelfactory.sar/META-INF/jgroups-channelfactory-stacks.xml jboss-6.0.0.M1-work/server/cluster/deploy/cluster/jgroups-channelfactory.sar/META-INF/jgroups-channelfactory-stacks.xml
+--- jboss-6.0.0.M1/server/cluster/deploy/cluster/jgroups-channelfactory.sar/META-INF/jgroups-channelfactory-stacks.xml	2009-12-01 17:30:32.000000000 +0100
++++ jboss-6.0.0.M1-work/server/cluster/deploy/cluster/jgroups-channelfactory.sar/META-INF/jgroups-channelfactory-stacks.xml	2009-12-03 09:27:47.775459248 +0100
+@@ -8,6 +8,7 @@
+ 		     singleton_name="shared-udp"
+ 		     mcast_port="${jboss.jgroups.udp.mcast_port:45688}"
+ 		     mcast_addr="${jboss.partition.udpGroup:228.11.11.11}"
++                     ip_mcast="false"
+ 		     tos="8"
+ 		     ucast_recv_buf_size="20000000"
+ 		     ucast_send_buf_size="640000"
+@@ -68,7 +69,7 @@
+                 stack below.
+           -->
+           &shared-udp;
+-          <PING timeout="2000" num_initial_members="3"/>
++          <PING gossip_host="${jboss.gossip_host:}" gossip_port="${jboss.gossip_port:12001}" gossip_refresh="${jboss.gossip_refresh:5000}" timeout="2000" num_initial_members="3"/>
+           <MERGE2 max_interval="100000" min_interval="20000"/>
+           <FD_SOCK/>
+           <FD timeout="6000" max_tries="5" shun="true"/>
+diff -Naur jboss-6.0.0.M1/server/cluster/deploy/jbossweb.sar/server.xml jboss-6.0.0.M1-work/server/cluster/deploy/jbossweb.sar/server.xml
+--- jboss-6.0.0.M1/server/cluster/deploy/jbossweb.sar/server.xml	2009-12-01 17:34:40.000000000 +0100
++++ jboss-6.0.0.M1-work/server/cluster/deploy/jbossweb.sar/server.xml	2009-12-03 09:26:06.828374666 +0100
+@@ -32,7 +32,7 @@
+            keystorePass="rmi+ssl" sslProtocol = "TLS" />
+       -->
+ 
+-      <Engine name="jboss.web" defaultHost="localhost">
++      <Engine name="jboss.web" defaultHost="localhost" jvmRoute="${jboss.jvmRoute:nodeX}" backgroundProcessorDelay="10">
+ 
+          <!-- The JAAS based authentication and authorization realm implementation
+          that is compatible with the jboss 3.2.x realm implementation.
+diff -Naur jboss-6.0.0.M1/server/group/deploy/jbossweb.sar/server.xml jboss-6.0.0.M1-work/server/group/deploy/jbossweb.sar/server.xml
+--- jboss-6.0.0.M1/server/group/deploy/jbossweb.sar/server.xml	2009-12-01 17:36:18.000000000 +0100
++++ jboss-6.0.0.M1-work/server/group/deploy/jbossweb.sar/server.xml	2009-12-03 09:25:28.744457948 +0100
+@@ -32,7 +32,7 @@
+            keystorePass="rmi+ssl" sslProtocol = "TLS" />
+       -->
+ 
+-      <Engine name="jboss.web" defaultHost="localhost">
++      <Engine name="jboss.web" defaultHost="localhost" jvmRoute="${jboss.jvmRoute:nodeX}" backgroundProcessorDelay="10">
+ 
+          <!-- The JAAS based authentication and authorization realm implementation
+          that is compatible with the jboss 3.2.x realm implementation.

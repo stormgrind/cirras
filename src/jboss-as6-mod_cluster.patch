@@ -1,0 +1,22 @@
+--- jboss-6.0.0.M1/server/cluster/deploy/jbossweb.sar/META-INF/jboss-beans.xml	2009-12-01 17:34:40.000000000 +0100
++++ jboss-6.0.0.M1-work/server/cluster/deploy/jbossweb.sar/META-INF/jboss-beans.xml	2009-12-03 09:33:04.222585161 +0100
+@@ -15,7 +15,7 @@
+       <depends>jboss:service=TransactionManager</depends>
+ 
+       <!-- Uncomment to enable mod_cluster integration -->
+-      <!--depends>ModClusterListener</depends-->
++      <depends>ModClusterListener</depends>
+ 
+       <!-- Inject the TomcatDeployer -->
+       <property name="tomcatDeployer"><inject bean="WarDeployer"/></property>
+--- jboss-6.0.0.M1/server/group/deploy/jbossweb.sar/META-INF/jboss-beans.xml	2009-12-01 17:36:18.000000000 +0100
++++ jboss-6.0.0.M1-work/server/group/deploy/jbossweb.sar/META-INF/jboss-beans.xml	2009-12-03 09:34:17.883326660 +0100
+@@ -15,7 +15,7 @@
+       <depends>jboss:service=TransactionManager</depends>
+ 
+       <!-- Uncomment to enable mod_cluster integration -->
+-      <!--depends>ModClusterListener</depends-->
++      <depends>ModClusterListener</depends>
+ 
+       <!-- Inject the TomcatDeployer -->
+       <property name="tomcatDeployer"><inject bean="WarDeployer"/></property>
