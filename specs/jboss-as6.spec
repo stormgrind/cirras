@@ -50,7 +50,7 @@ JBOSS_SHELL=/bin/bash
 /usr/sbin/useradd -c JBossAS -r -s $JBOSS_SHELL -d /opt/%{name} -g %{name} %{name} 2>/dev/null || :
 
 %post
-/bin/echo "echo JBOSS_IP=\`ifconfig eth0 | awk '/inet addr/ {split (\$2,A,\":\"); print A[2]}'\` >> /etc/%{name}.conf" >> /etc/rc.local
+/bin/echo "echo JBOSS_IP=\`ifconfig eth0 | awk '/inet addr/ {split (\$2,A,\":\"); print A[2]}'\` >> /etc/jboss-as.conf" >> /etc/rc.local
 
 %files
 %defattr(-,%{name},%{name})
