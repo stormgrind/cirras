@@ -1,3 +1,5 @@
+%define jboss_name jboss-as6
+
 Summary:    TorqueBox
 Name:       torquebox
 Version:    1.0.0.Beta18
@@ -6,13 +8,13 @@ License:    LGPL
 BuildArch:  noarch
 Group:      Applications/System
 Source0:    http://repository.torquebox.org/maven2/releases/org/torquebox/torquebox-core/%{version}/torquebox-core-%{version}-deployer.jar
-Requires:   jboss-as6
+Requires:   %{jboss_name}
 BuildRoot:  %{_tmppath}/%{name}-%{version}-%{release}-root-%(%{__id_u} -n)
 
 %define __jar_repack %{nil}
 
 %description
-The Torquebox deployer for AS5
+The Torquebox deployer for AS 6
 
 %prep
 %setup -c torquebox.deployer -T
@@ -22,8 +24,8 @@ The Torquebox deployer for AS5
 configs=( all  default  standard  web )
 
 for config in ${configs[@]} ; do
-  install -d 755 $RPM_BUILD_ROOT/opt/jboss-as6/server/${config}/deployers/
-  cp %SOURCE0 $RPM_BUILD_ROOT/opt/jboss-as6/server/${config}/deployers/
+  install -d 755 $RPM_BUILD_ROOT/opt/%{jboss_name}/server/${config}/deployers/
+  cp %SOURCE0 $RPM_BUILD_ROOT/opt/%{jboss_name}/server/${config}/deployers/
 done
 
 %clean
@@ -32,7 +34,7 @@ rm -Rf $RPM_BUILD_ROOT
 %pre
 
 %files
-%defattr(-,jboss,jboss)
+%defattr(-,%{jboss_name},%{jboss_name})
 /
 
 %changelog
