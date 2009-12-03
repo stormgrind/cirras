@@ -6,6 +6,7 @@ License:    LGPL
 BuildArch:  noarch
 Group:      Applications/System
 Requires:   shadow-utils
+Requires:   initscripts
 Source0:    http://heanet.dl.sourceforge.net/sourceforge/javagroups/JGroups-%{version}.bin.zip
 Source1:    jgroups-gossip.init
 BuildRoot:  %{_tmppath}/%{name}-%{version}-%{release}-root-%(%{__id_u} -n)
