@@ -5,7 +5,7 @@
 # chkconfig: 2345 84 15
 # description: JBoss Application Server
 # processname: jboss-as6
-# config: /etc/jboss-as6.conf
+# config: /etc/jboss-as.conf
 # pidfile: /var/run/jboss-as6.pid
 
 ### BEGIN INIT INFO
@@ -37,7 +37,7 @@ fi
 # Source configuration.
 [ -f /etc/java/java.conf ] && . /etc/java/java.conf
 #read in system wide jboss configuration
-[ -f /etc/${NAME}.conf ] && . /etc/${NAME}.conf
+[ -f /etc/jboss-as.conf ] && . /etc/jboss-as.conf
 
 #read in service-specific jboss configuration
 [ -f /etc/sysconfig/${NAME} ] && . /etc/sysconfig/${NAME}
@@ -82,10 +82,10 @@ IP_ADDRESS=`ip addr list eth0 | grep "inet " | cut -d' ' -f6 | cut -d/ -f1`
 JBOSSSH=${JBOSSSH:-"$JBOSS_HOME/bin/run.sh -c $JBOSSCONF"}
 
 #define the user under which jboss will run, or use RUNASIS to run as the current user
-JBOSSUS=${JBOSSUS:-"jboss"}
+JBOSSUS=${JBOSSUS:-"${NAME}"}
 
 #define the group under which jboss will run
-JBOSSGR=${JBOSSGR:-"jboss"}
+JBOSSGR=${JBOSSGR:-"${NAME}"}
 
 #define the lock file for this jboss instance
 JBOSSLOCK=/var/lock/subsys/$NAME-$JBOSSCONF
@@ -340,7 +340,7 @@ start() {
         # if server.log has been updated
         if [ $JBOSS_HOME/server/$JBOSSCONF/log/temp.file -ot $JBOSS_HOME/server/$JBOSSCONF/log/server.log ]; then
             #grep -q MicroKernel $JBOSS_HOME/server/$JBOSSCONF/log/server.log > /dev/null 2>&1
-            grep -q Microcontainer $JBOSS_HOME/server/$JBOSSCONF/log/server.log > /dev/null 2>&1
+            grep -qe "^.*org.jboss.bootstrap.impl.base.server.AbstractServer.*Started in.*" $JBOSS_HOME/server/$JBOSSCONF/log/server.log > /dev/null 2>&1
             if [ $? -eq 0 ]; then
                 touch /var/lock/subsys/${NAME}
                 RETVAL=0
