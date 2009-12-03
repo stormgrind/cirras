@@ -53,5 +53,5 @@ rm -Rf $RPM_BUILD_ROOT
 /
 
 %changelog
-* Thu Dec 03 2009 Marek Goldmann 6.0.0.M1-1
+* Thu Dec 03 2009 Marek Goldmann 1.0.0.Beta1-1
 - Initial release
