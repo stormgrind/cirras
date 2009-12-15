@@ -4,7 +4,7 @@ hardware:
   memory: 256
   partitions:
     - root: "/"
-      size: 2
+      size: 1
 appliances:
   - jeos
 packages:

@@ -2,14 +2,17 @@ name: back-end
 summary: back-end appliance with JBoss AS 6
 hardware:
   memory: 512
+  partitions:
+    - root: "/"
+      size: 2
 appliances:
   - cirras
 packages:
   includes:
     - jboss-as6
     - jboss-as6-cloud-profiles
-    - torquebox
     - java-1.6.0-openjdk
+#    - torquebox
 post:
   base:
     - "/sbin/chkconfig --add jboss-as6"
