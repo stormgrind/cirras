@@ -1,5 +1,7 @@
 name: cirras
 summary: Appliance template for CirrAS appliances
+os:
+  version: 12
 hardware:
   memory: 256
   partitions:
@@ -10,7 +12,7 @@ appliances:
 packages:
   includes:
     - cirras-management
-    - jopr-agent
+    - rhq-agent
     - which
     - sudo
     - ruby-devel

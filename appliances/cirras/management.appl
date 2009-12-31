@@ -11,7 +11,7 @@ packages:
   includes:
     - dhcp
     - java-1.6.0-openjdk-devel
-    - jopr
+    - rhq
     - postgresql-server
 post:
   base:
