@@ -35,10 +35,11 @@ unzip -q %{SOURCE0} -d $RPM_BUILD_DIR
 
 %install
 install -d -m 755 $RPM_BUILD_ROOT/opt/%{name}
+cd %{name}-server-%{version} 
 cp -R . $RPM_BUILD_ROOT/opt/%{name}
 
 install -d -m 755 $RPM_BUILD_ROOT/usr/share/%{name}
-#install -m 755 %{SOURCE1} $RPM_BUILD_ROOT/usr/share/%{name}/preconfigure-rhq-agent.sh
+install -m 755 %{SOURCE1} $RPM_BUILD_ROOT/usr/share/%{name}/preconfigure-rhq-agent.sh
 install -m 644 %{SOURCE2} $RPM_BUILD_ROOT/usr/share/%{name}/agent-configuration.xml
 install -m 755 %{SOURCE4} $RPM_BUILD_ROOT/usr/share/%{name}/preconfigure-rhq.sh
 install -m 644 %{SOURCE5} $RPM_BUILD_ROOT/usr/share/%{name}/rhq-server.properties
@@ -47,7 +48,6 @@ install -d -m 755 $RPM_BUILD_ROOT/etc/sysconfig
 
 echo "RHQ_VERSION=%{version}"       > $RPM_BUILD_ROOT/etc/sysconfig/%{name}
 echo "RHQ_HOME=/opt/%{name}"        >> $RPM_BUILD_ROOT/etc/sysconfig/%{name}
-
 
 install -d -m 755 $RPM_BUILD_ROOT%{_initrddir}
 install -m 755 %{SOURCE3} $RPM_BUILD_ROOT%{_initrddir}/%{name}
