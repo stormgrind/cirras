@@ -3,7 +3,7 @@
 [ -f /etc/sysconfig/rhq ] && . /etc/sysconfig/rhq
 
 RHQ_AGENT_NAME=rhq-enterprise-agent
-RHQ_AGENT_VERSION=1.3.1
+RHQ_AGENT_VERSION=1.4.0.B01
 RHQ_CONFIG=/usr/share/rhq/agent-configuration.xml
 RHQ_TMP_DIR=/tmp/rhq-$RHQ_VERSION
 

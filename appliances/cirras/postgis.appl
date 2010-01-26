@@ -1,9 +1,0 @@
-name: postgis
-summary: Appliance with PostGIS
-appliances:
-  - cirras
-packages:
-  includes:
-    - postgresql
-    - postgresql-server
-    - postgis
