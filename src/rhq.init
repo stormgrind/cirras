@@ -87,7 +87,7 @@ memory=`dmesg | grep ^Memory: | awk '{ print $2 }' | awk -F\/ '{ print $2 }' | s
 
 RHQ_SERVER_HOME=$RHQ_HOME
 RHQ_SERVER_JAVA_HOME=/usr/lib/jvm/java-1.6.0/
-RHQ_SERVER_JAVA_OPTS="-Xms$(($memory / 1024))M -Xmx$(($memory / 1024))M -XX:PermSize=$(($memory / 1024 / 4))M -XX:MaxPermSize=$(($memory / 1024 / 4))M"
+RHQ_SERVER_JAVA_OPTS="-Xms$(($memory / 1024 - $memory / 10240))M -Xmx$(($memory / 1024 - $memory / 10240))M -XX:PermSize=$(($memory / 1024 / 4))M -XX:MaxPermSize=$(($memory / 1024 / 4))M"
 
 POSTGRESQL_PACKAGES=`rpm -qa | grep postgresql | wc -l`
 
