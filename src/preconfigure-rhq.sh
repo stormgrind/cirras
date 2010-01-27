@@ -1,5 +1,7 @@
 #!/bin/sh
 
+echo "Preconfiguring RHQ server..."
+
 [ -f /etc/sysconfig/boxgrinder ]   && . /etc/sysconfig/boxgrinder
 [ -f /etc/sysconfig/rhq ]          && . /etc/sysconfig/rhq
 
@@ -22,20 +24,37 @@ else
     PUBLIC_IP=$IP_ADDRESS
 fi
 
-USER_CREATED=`/bin/su postgres -c "/bin/echo '\du' | /usr/bin/psql -tA" &>/dev/null | awk -F\| '{ print $1 }' | grep $DATABASE_USER | wc -l`
-DATABASE_CREATED=`/bin/su postgres -c "/usr/bin/psql -tAl" &>/dev/null | awk -F\| '{ print $1 }' | grep $DATABASE_NAME | wc -l`
+echo "Local IP address: $LOCAL_IP"
+echo "Public IP address: $PUBLIC_IP"
+
+USER_CREATED=`/bin/su postgres -c "/bin/echo '\du' | /usr/bin/psql -tA" | awk -F\| '{ print $1 }' | grep $DATABASE_USER | wc -l`
+DATABASE_CREATED=`/bin/su postgres -c "/usr/bin/psql -tAl" | awk -F\| '{ print $1 }' | grep $DATABASE_NAME | wc -l`
 
 if [ $USER_CREATED -eq "0" ]
 then
-        /bin/su postgres -c "/usr/bin/createuser -SDR $DATABASE_USER &>/dev/null"
-        echo "ALTER USER $DATABASE_USER WITH PASSWORD '$DATABASE_PASSWORD'" | /bin/su postgres -c /usr/bin/psql &>/dev/null
+    echo "Database user $DATABASE_USER not created, creating..."
+    /bin/su postgres -c "/usr/bin/createuser -SDR $DATABASE_USER"
+    echo "ALTER USER $DATABASE_USER WITH PASSWORD '$DATABASE_PASSWORD';" | /bin/su postgres -c /usr/bin/psql
+    echo "User created."
+else
+    echo "Database user $DATABASE_USER already exists, skipping."
 fi
 
 if [ $DATABASE_CREATED -eq "0" ]
 then
-        /bin/su postgres -c "/usr/bin/createdb -O $DATABASE_USER $DATABASE_NAME &>/dev/null"
+    echo "Database $DATABASE_NAME not created, creating..."
+    /bin/su postgres -c "/usr/bin/createdb -O $DATABASE_USER $DATABASE_NAME"
+    echo "Database created."
+else
+    echo "Database $DATABASE_NAME already exists, skipping."
 fi
 
+echo "Reconfiguring rhq-server.properties file..."
 sed s/#LOCAL_IP#/$LOCAL_IP/g /usr/share/rhq/rhq-server.properties | sed s/#PUBLIC_IP#/$PUBLIC_IP/g | sed s/#DATABASE_USER#/$DATABASE_USER/g | sed s/#DATABASE_PASSWORD#/$DATABASE_PASSWORD/g | sed s/#DATABASE_NAME#/$DATABASE_NAME/g > $RHQ_HOME/bin/rhq-server.properties
+echo "File reconfigured."
 
+echo "Changing permissions in /opt/rhq/ directory..."
 chown rhq:rhq /opt/rhq/ -R
+echo "Permissions changed."
+
+echo "RHQ server is preconfigured now."

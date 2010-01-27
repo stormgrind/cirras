@@ -89,7 +89,7 @@ RHQ_SERVER_HOME=$RHQ_HOME
 RHQ_SERVER_JAVA_HOME=/usr/lib/jvm/java-1.6.0/
 RHQ_SERVER_JAVA_OPTS="-Xms$(($memory / 1024 - $memory / 10240))M -Xmx$(($memory / 1024 - $memory / 10240))M -XX:PermSize=$(($memory / 1024 / 4))M -XX:MaxPermSize=$(($memory / 1024 / 4))M"
 
-POSTGRESQL_PACKAGES=`rpm -qa | grep postgresql | wc -l`
+POSTGRESQL_PACKAGES=`rpm -qa postgresql* | wc -l`
 
 # exit if there is no postgresql installed
 [ $POSTGRESQL_PACKAGES -eq "0" ] && exit
