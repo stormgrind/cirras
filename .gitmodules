@@ -1,6 +1,3 @@
 [submodule "lib/boxgrinder-build"]
 	path = lib/boxgrinder-build
 	url = git://github.com/stormgrind/boxgrinder-build.git 
-[submodule "lib/cantiere"]
-	path = lib/cantiere
-	url = git://github.com/stormgrind/cantiere.git
