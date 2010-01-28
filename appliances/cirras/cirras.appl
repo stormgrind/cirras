@@ -20,4 +20,3 @@ packages:
     - make
     - gcc-c++
     - wget
-    - unzip

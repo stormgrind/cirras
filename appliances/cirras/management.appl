@@ -12,6 +12,8 @@ packages:
     - dhcp
     - java-1.6.0-openjdk-devel
     - rhq
+    - cirras-rhq
+    - cronie
     - postgresql-server
 post:
   base:
