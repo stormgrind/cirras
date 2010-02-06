@@ -8,6 +8,7 @@ packages:
     - jboss-jgroups
     - mod_cluster
     - httpd
+    - augeas # required to discover Apache by RHQ
 post:
   base:
     - "/sbin/chkconfig --level 234 httpd on"
