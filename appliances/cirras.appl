@@ -20,3 +20,8 @@ packages:
     - make
     - gcc-c++
     - wget
+repos:
+  - name: "cirras-#ARCH#"
+    baseurl: "http://repo.boxgrinder.org/cirras/packages/#OS_NAME#/#OS_VERSION#/RPMS/#ARCH#"
+  - name: "cirras-noarch"
+    baseurl: "http://repo.boxgrinder.org/cirras/packages/#OS_NAME#/#OS_VERSION#/RPMS/noarch"
