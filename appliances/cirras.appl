@@ -6,12 +6,29 @@ os:
 hardware:
   memory: 256
   partitions:
-    - root: "/"
+    "/":
       size: 1
 appliances:
   - jeos
 packages:
   includes:
+    - bash
+    - kernel
+    - grub
+    - e2fsprogs
+    - passwd
+    - policycoreutils
+    - chkconfig
+    - rootfiles
+    - yum
+    - vim-minimal
+    - acpid
+    - dhclient
+    - iputils
+    - generic-logos
+    - openssh-server
+    - openssh-clients
+    - mkinitrd
     - cirras-management
     - rhq-agent
     - which

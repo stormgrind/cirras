@@ -3,7 +3,7 @@ summary: Appliance to manage CirrAS instances
 hardware:
   memory: 512
   partitions:
-    - root: "/"
+    "/":
       size: 2
 appliances:
   - cirras

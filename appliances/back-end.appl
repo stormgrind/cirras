@@ -3,7 +3,7 @@ summary: back-end appliance with JBoss AS 6
 hardware:
   memory: 512
   partitions:
-    - root: "/"
+    "/":
       size: 2
 appliances:
   - cirras
