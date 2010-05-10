@@ -8,8 +8,6 @@ hardware:
   partitions:
     "/":
       size: 1
-appliances:
-  - jeos
 packages:
   includes:
     - bash
