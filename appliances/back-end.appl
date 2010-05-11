@@ -1,4 +1,6 @@
 name: back-end
+version: 1
+release: 1
 summary: back-end appliance with JBoss AS 6
 hardware:
   memory: 512

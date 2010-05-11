@@ -1,5 +1,7 @@
 name: front-end
 summary: front-end appliance with httpd, mod_cluster and GossipRouter
+version: 1
+release: 1
 appliances:
   - cirras
 packages:
