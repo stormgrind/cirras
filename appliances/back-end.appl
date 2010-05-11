@@ -14,3 +14,6 @@ packages:
     - jboss-as6
     - jboss-as6-cloud-profiles
     - java-1.6.0-openjdk
+post:
+  base:
+    - "/bin/echo 'appliance_name: front-end' > /etc/cirras"
