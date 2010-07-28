@@ -2,7 +2,7 @@ name: cirras
 summary: Appliance template for CirrAS appliances
 os:
   name: fedora
-  version: 11
+  version: 13
 hardware:
   memory: 256
   partitions:
